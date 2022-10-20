@@ -19,9 +19,10 @@ export class HomeComponent implements OnInit {
     const maximo = Number(document.scrollingElement?.scrollHeight);
 
     if(posicion > maximo) {
+      if(this.peliculasService.cargando){return;}
       //TODO Llamar al Servicio
       this.peliculasService.getCartelera().subscribe(resp => {
-        this.movies.push(...resp.results);
+        this.movies.push(...resp);
       });
     }
   }
@@ -33,8 +34,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.peliculasService.getCartelera().subscribe(resp => {
-      this.movies = resp.results;
-      this.moviesSlideShow = resp.results;
+      this.movies = resp;
+      this.moviesSlideShow = resp;
     });
   }
 
