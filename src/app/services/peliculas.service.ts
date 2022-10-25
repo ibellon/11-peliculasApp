@@ -23,6 +23,10 @@ export class PeliculasService {
     }
   }
 
+  resetCarteleraPage() {
+    this.carteleraPage = 1;
+  }
+
   getCartelera(): Observable<Movie[]> {
     
     if(this.cargando) {
@@ -51,5 +55,5 @@ export class PeliculasService {
       this.baseUrl+"search/movie", {params})
       .pipe(map((resp) => resp.results));
   
-    }
+  }
 }

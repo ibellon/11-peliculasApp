@@ -1,1 +1,8 @@
-<p>buscar works!</p>
+<h1>Buscar películas -> <small class="text-capitalize">{{textoBuscar}}</small></h1>
+<hr>
+
+<div *ngFor="let item of movies" class="row">
+    <div class="col">
+        <app-peliculas-poster-grid [movies] = movies></app-peliculas-poster-grid>
+    </div>
+</div>
