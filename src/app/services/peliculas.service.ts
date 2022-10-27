@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { CarteleraResponse, Movie} from '../interfaces/cartelera-response';
+import { MovieResponse } from '../interfaces/movie-response';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,10 @@ export class PeliculasService {
       this.baseUrl+"search/movie", {params})
       .pipe(map((resp) => resp.results));
   
+  }
+
+  getPeliculaDetalle(id: string) {
+    return this.http.get<MovieResponse>(
+      this.baseUrl+"movie/"+id, {params: this.params});
   }
 }
